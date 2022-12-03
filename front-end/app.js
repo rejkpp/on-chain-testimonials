@@ -29,6 +29,7 @@ const App = () => {
       const account = accounts[0];
       console.log("found an authorized account:", account);
       setCurrentAccount(account);
+      getAllShakas();
 
     } else {
       console.error("no authorized account found");
@@ -53,6 +54,7 @@ const App = () => {
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
+      getAllShakas();
     } catch (error) {
       console.error(error);
     }
@@ -120,7 +122,7 @@ const App = () => {
 
       const onNewShaka = (from, timestamp, message) => {
           console.log("newShaka", from, timestamp, message);
-          setAllWaves((prevState) => [
+          setAllShakas((prevState) => [
               ...prevState,
               {
                   address: from,
@@ -151,7 +153,7 @@ const App = () => {
         <div className="header">🤙🏼 shaka!</div>
 
         <div className="bio">
-          leave a message on the blocks. there is a 20% chance you will receive 0.0001 eth after leaving a message. and there is a 5 min cool down. don't spam, you'll pay gas and the message won't go through (transaction will fail)
+          leave a message on the blocks (goerli testnet). there is a 20% chance you will receive 0.0001 eth (on goerli) after leaving a message. there is a 5 min cool down. so, wait 5 min. after sending a message. otherwise you'll pay gas and the message won't go through (transaction will fail)
         </div>
 
         {
@@ -176,7 +178,7 @@ const App = () => {
           </button>
         )}
 
-        {allShakas.map((shaka, index) => {
+        {[...allShakas].reverse().map((shaka, index) => {
          return (
            <div key={index} style={{ backgroundColor: "grey", marginTop: "16px", padding: "8px" }}>
              <div>Address: {shaka.address}</div>
