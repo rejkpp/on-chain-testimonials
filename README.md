@@ -11,3 +11,23 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
+
+
+tld ideas for block chain explorer
+
+
+.to
+.me
+.com
+.co
+.addy
+.po
+.pos
+.ad
+.be
+.su
+.mc
+.mv
+.bl
+.pk
+.contract
